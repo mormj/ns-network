@@ -1,0 +1,32 @@
+module: network
+block: udp_source
+label: UDP Source
+blocktype: sync_block
+
+parameters:
+-   id: port
+    label: UDP Port
+    dtype: unsigned int
+    settable: false
+-   id: pktlen
+    label: UDP Packet Data Size
+    dtype: size_t
+    settable: false
+-   id: itemsize
+    label: Item Size
+    dtype: size_t
+    settable: false
+    default: 0
+
+ports:
+-   domain: stream
+    id: out
+    direction: output
+    type: untyped
+    size: parameters/itemsize
+
+implementations:
+-   id: cpu
+# -   id: cuda
+
+file_format: 1
